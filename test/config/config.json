@@ -11,17 +11,19 @@
         "builders": {
             "withCapabilities": [
                 {
-                    "browserName": "chrome",
-                    "chromeOptions": {
-                        "args": [
-                            "headless",
-                            "window-size=1200,800",
-                            "disable-dev-shm-usage"
-                        ]
+                    "username": "username",
+                    "accessKey": "accesskey",
+                    "parent-tunnel": "tunnelName",
+                    "browserName": "internet explorer",
+                    "browserVersion": "latest",
+                    "platformName": "Windows 10",
+                    "name": "SH IE Test Suite",
+                    "sauce:options": {
+                        "iedriverVersion": "3.150.1"
                     }
-
                 }
-            ]
+            ],
+            "usingServer": ["https://ondemand.saucelabs.com/wd/hub"]
         }
     },
     "data": {
@@ -69,55 +71,8 @@
         "fail": {
             "tests": "path:./fail.js"
         },
-        "search": {
-            "tests": "path:./search.js",
-            "parallel": "data",
-            "data": {
-                "google": {
-                    "baseUrl": "https://www.google.com",
-                    "input": "input[name=q]",
-                    "button": "input[type=submit][name=btnK]",
-                    "result": "#search"
-                },
-                "yahoo": {
-                    "baseUrl": "http://www.yahoo.com",
-                    "input": "input[name=p]",
-                    "button": "#uh-search-button",
-                    "result": "#results"
-                },
-                "bing": {
-                    "baseUrl": "http://www.bing.com",
-                    "input": "input[name=q]",
-                    "button": "input[name=go]",
-                    "result": "#b_results"
-                }
-            }
-        },
-        "pay": {
-            "tests": "path:./pay.js",
-            "parallel": "data",
-            "data": {
-                "paypal": {
-                    "baseUrl": "https://www.paypal.com",
-                    "signupButton": "#signup-button",
-                    //<a href="https://www.paypal.com/us/webapps/mpp/account-selection" id="signup-button" ...>
-                    "signupForm": "#cta-btn"
-                },
-                "square": {
-                    "baseUrl": "http://www.squareup.com",
-                    "signupButton": "a.button[href*=signup]",
-                    //<a class="button" href="/signup/us?lang_code=en">Sign up with Square</a>
-                    "signupForm": "body.signup-page"
-                    //<body class="mac unknown ember-application signup-page">
-                }
-            }
-        },
-        "form": {
-            "tests": "path:./form.js",
-            "data": {
-                "useme": "require:./config/useme",
-                "baseUrl": "https://mdn.github.io/learning-area/html/forms/your-first-HTML-form/first-form-styled.html"
-            }
+        "ie11": {
+            "tests": "path:./ie11.js"
         },
         "chrome": {
 
